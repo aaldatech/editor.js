@@ -99,7 +99,7 @@ function me(r, e, t = "log", o, i = "color: inherit") {
       break;
   }
   o && s.push(o);
-  const a = "Editor.js 2.29.0", l = `line-height: 1em;
+  const a = "Editor.js 2.30.0-rc.2", l = `line-height: 1em;
             color: #006FEA;
             display: inline-block;
             font-size: 11px;
@@ -3359,9 +3359,9 @@ class L {
    */
   make(e) {
     const t = d.make("div", L.CSS.container);
-    return e.name && (t.dataset.itemName = e.name), e != null && e.icon && (this.nodes.icon = d.make("div", L.CSS.icon, {
+    return e.name && (t.dataset.itemName = e.name), this.nodes.icon = d.make("div", L.CSS.icon, {
       innerHTML: e.icon || Ho
-    }), t.appendChild(this.nodes.icon)), t.appendChild(d.make("div", L.CSS.title, {
+    }), t.appendChild(this.nodes.icon), t.appendChild(d.make("div", L.CSS.title, {
       innerHTML: e.title || ""
     })), e.secondaryLabel && t.appendChild(d.make("div", L.CSS.secondaryTitle, {
       textContent: e.secondaryLabel
@@ -4531,6 +4531,7 @@ const ze = class Tt extends Ce {
       onActivate: () => {
         this.toolButtonActivated(o.name, t.data);
       },
+      type: o.type,
       secondaryLabel: o.shortcut ? Be(o.shortcut) : ""
     });
     return this.toolsToBeDisplayed.reduce((t, o) => (Array.isArray(o.toolbox) ? o.toolbox.forEach((i) => {
@@ -6529,7 +6530,7 @@ class ye extends y {
    */
   get isAtStart() {
     const { currentBlock: e } = this.Editor.BlockManager;
-    if (!e.focusable)
+    if (!(e != null && e.focusable))
       return !0;
     const t = b.get(), o = d.getDeepestNode(e.currentInput);
     let i = t.focusNode;
@@ -7881,7 +7882,7 @@ class mi extends y {
     }), {
       time: +/* @__PURE__ */ new Date(),
       blocks: t,
-      version: "2.29.0"
+      version: "2.30.0-rc.2"
     };
   }
 }
@@ -9527,7 +9528,7 @@ class Oi {
 class _i {
   /** Editor version */
   static get version() {
-    return "2.29.0";
+    return "2.30.0-rc.2";
   }
   /**
    * @param {EditorConfig|string|undefined} [configuration] - user configuration

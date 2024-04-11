@@ -2,32 +2,13 @@ diff --git a/package.json b/package.json
 index 16a857f..817e68b 100644
 --- a/package.json
 +++ b/package.json
-@@ -1,6 +1,6 @@
+@@ -1,5 +1,5 @@
  {
 -  "name": "@editorjs/editorjs",
--  "version": "2.30.0-rc.2",
 +  "name": "editor-js",
-+  "version": "2.29.0",
+   "version": "2.30.0-rc.2",
    "description": "Editor.js — Native JS, based on API and Open Source",
    "main": "dist/editorjs.umd.js",
-   "module": "dist/editorjs.mjs",
-@@ -45,14 +45,14 @@
-     "@editorjs/code": "^2.7.0",
-     "@editorjs/delimiter": "^1.2.0",
-     "@editorjs/header": "^2.7.0",
--    "@editorjs/paragraph": "^2.11.4",
-+    "@editorjs/paragraph": "^2.11.3",
-     "@editorjs/simple-image": "^1.4.1",
-     "@types/node": "^18.15.11",
-     "chai-subset": "^1.6.0",
-     "codex-notifier": "^1.1.2",
-     "codex-tooltip": "^1.0.5",
-     "core-js": "3.30.0",
--    "cypress": "^13.7.1",
-+    "cypress": "^12.9.0",
-     "cypress-intellij-reporter": "^0.0.7",
-     "cypress-plugin-tab": "^1.0.5",
-     "cypress-terminal-report": "^5.3.2",
 @@ -76,4 +76,4 @@
      "type": "opencollective",
      "url": "https://opencollective.com/editorjs"
@@ -85,15 +66,6 @@ diff --git a/src/components/modules/caret.ts b/src/components/modules/caret.ts
 index 57d5c96..3dc51f4 100644
 --- a/src/components/modules/caret.ts
 +++ b/src/components/modules/caret.ts
-@@ -50,7 +50,7 @@ export default class Caret extends Module {
-     /**
-      * If Block does not contain inputs, treat caret as "at start"
-      */
--    if (!currentBlock?.focusable) {
-+    if (!currentBlock.focusable) {
-       return true;
-     }
- 
 @@ -60,7 +60,7 @@ export default class Caret extends Module {
  
      /** In case lastNode is native input */
@@ -112,6 +84,18 @@ index 57d5c96..3dc51f4 100644
      }
  
      /** Case when selection have been cleared programmatically, for example after CBS */
+diff --git a/src/components/ui/toolbox.ts b/src/components/ui/toolbox.ts
+index 3984e36..1b9ffeb 100644
+--- a/src/components/ui/toolbox.ts
++++ b/src/components/ui/toolbox.ts
+@@ -268,6 +266,7 @@ export default class Toolbox extends EventsDispatcher<ToolboxEventMap> {
+         onActivate: (): void => {
+           this.toolButtonActivated(tool.name, toolboxItem.data);
+         },
++        type: tool.type,
+         secondaryLabel: tool.shortcut ? _.beautifyShortcut(tool.shortcut) : '',
+       };
+     };
 diff --git a/src/components/utils/popover/index.ts b/src/components/utils/popover/index.ts
 index 34b483b..cc88b92 100644
 --- a/src/components/utils/popover/index.ts
@@ -236,43 +220,6 @@ index 9513a2c..f2e6ae0 100644
 +  public get toggle(): boolean | (() => boolean) | string | undefined {
      return this.params.toggle;
    }
- 
-@@ -85,7 +85,7 @@ export class PopoverItem {
-     noHover: string,
-     noFocus: string,
-     wobbleAnimation: string
--    } {
-+  } {
-     return {
-       container: 'ce-popover-item',
-       title: 'ce-popover-item__title',
-@@ -178,12 +178,13 @@ export class PopoverItem {
-       el.dataset.itemName = params.name;
-     }
- 
--    this.nodes.icon = Dom.make('div', PopoverItem.CSS.icon, {
--      innerHTML: params.icon || IconDotCircle,
--    });
--
--    el.appendChild(this.nodes.icon);
-+    if (params?.icon) {
-+      this.nodes.icon = Dom.make('div', PopoverItem.CSS.icon, {
-+        innerHTML: params.icon || IconDotCircle,
-+      });
- 
-+      el.appendChild(this.nodes.icon);
-+    }
-     el.appendChild(Dom.make('div', PopoverItem.CSS.title, {
-       innerHTML: params.title || '',
-     }));
-@@ -254,7 +255,7 @@ export class PopoverItem {
-   /**
-    * Disables special focus and hover behavior
-    */
--  private disableSpecialHoverAndFocusBehavior(): void  {
-+  private disableSpecialHoverAndFocusBehavior(): void {
-     this.removeSpecialFocusBehavior();
-     this.removeSpecialHoverBehavior();
  
 diff --git a/types/api/toolbar.d.ts b/types/api/toolbar.d.ts
 index 8e6eefb..c822613 100644

@@ -3359,9 +3359,9 @@ class L {
    */
   make(e) {
     const t = d.make("div", L.CSS.container);
-    return e.name && (t.dataset.itemName = e.name), this.nodes.icon = d.make("div", L.CSS.icon, {
+    return e.name && (t.dataset.itemName = e.name), e != null && e.icon && (this.nodes.icon = d.make("div", L.CSS.icon, {
       innerHTML: e.icon || Ho
-    }), t.appendChild(this.nodes.icon), t.appendChild(d.make("div", L.CSS.title, {
+    }), t.appendChild(this.nodes.icon)), t.appendChild(d.make("div", L.CSS.title, {
       innerHTML: e.title || ""
     })), e.secondaryLabel && t.appendChild(d.make("div", L.CSS.secondaryTitle, {
       textContent: e.secondaryLabel
@@ -3790,6 +3790,7 @@ const yt = class N extends Ce {
       "Internal Documents",
       "Procedures",
       "Vaccination",
+      "Lab Report",
       "Anti-Parasitic",
       "Medicine",
       "Soap"
@@ -4448,6 +4449,8 @@ const ze = class Tt extends Ce {
   }
   /**
    * CSS styles
+   *
+   * @returns {Object<string, string>}
    */
   static get CSS() {
     return {

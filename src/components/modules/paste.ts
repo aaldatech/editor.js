@@ -1,6 +1,7 @@
 import Module from '../__module';
 import $ from '../dom';
 import * as _ from '../utils';
+import { sanitizeBlockWUlid } from './../../util.js'
 import {
   BlockAPI,
   PasteEvent,
@@ -189,7 +190,9 @@ export default class Paste extends Module {
      */
     if (editorJSData) {
       try {
-        this.insertEditorJSData(JSON.parse(editorJSData));
+        const data = JSON.parse(editorJSData)
+        sanitizeBlockWUlid(data)
+        this.insertEditorJSData(data);
 
         return;
       } catch (e) { } // Do nothing and continue execution as usual if error appears

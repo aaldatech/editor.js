@@ -3796,6 +3796,7 @@ const Ct = class R extends Ie {
       "Lab Report",
       "Anti-Parasitic",
       "Medicine",
+      "medicine_v2",
       "Soap"
     ], i = [], n = [];
     t && (i.push(new O({

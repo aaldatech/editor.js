@@ -2943,18 +2943,16 @@ class No extends E {
    * @param {boolean} openingState —  opening state of Block Setting
    */
   toggleBlockSettingsById(e) {
-    setTimeout(() => {
-      const t = this.Editor.BlockManager.getBlockById(e);
-      if (!t) {
-        Y("Block not found", "warn");
-        return;
-      }
-      if (this.Editor.BlockSelection.selectBlock(t), this.Editor.BlockManager.currentBlock = t, this.Editor.BlockManager.currentBlockIndex === -1) {
-        Y("Could't toggle the Toolbar because there is no block selected ", "warn");
-        return;
-      }
-      this.Editor.Toolbar.moveAndOpen(), this.Editor.BlockSettings.open();
-    }, 600);
+    const t = this.Editor.BlockManager.getBlockById(e);
+    if (!t) {
+      Y("Block not found", "warn");
+      return;
+    }
+    if (this.Editor.BlockSelection.selectBlock(t), this.Editor.BlockManager.currentBlock = t, this.Editor.BlockManager.currentBlockIndex === -1) {
+      Y("Could't toggle the Toolbar because there is no block selected ", "warn");
+      return;
+    }
+    this.Editor.Toolbar.moveAndOpen(), this.Editor.BlockSettings.open();
   }
   /**
    * Open toolbox
@@ -3798,6 +3796,7 @@ const Ct = class R extends Ie {
       "Lab Report",
       "Anti-Parasitic",
       "Medicine",
+      "medicine_v2",
       "Soap"
     ], i = [], n = [];
     t && (i.push(new O({

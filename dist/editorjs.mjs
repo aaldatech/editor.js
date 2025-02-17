@@ -7030,7 +7030,7 @@ class vi extends E {
 }
 const _t = (r) => {
   if (typeof r == "object" && r !== null) {
-    r.hasOwnProperty("row_ulid") && (r.row_ulid = ce.generate().toString()), r.hasOwnProperty("ulid") && r.ulid && r.ulid.length > 5 && (r.ulid = ce.generate().toString());
+    r.hasOwnProperty("row_ulid") && (r.row_ulid = ce.generate().toString()), r.hasOwnProperty("ulid") && r.ulid && r.ulid.length > 5 && (r.ulid = ce.generate().toString()), r.hasOwnProperty("govnName") && (r.govnName = "");
     for (const e in r)
       r.hasOwnProperty(e) && _t(r[e]);
   }

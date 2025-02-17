@@ -7,6 +7,9 @@ export const sanitizeBlockWUlid = (obj) => {
         if (obj.hasOwnProperty('ulid') && !!obj.ulid && obj.ulid.length > 5) {
             obj.ulid = Ulid.generate().toString();
         }
+        if (obj.hasOwnProperty('govnName')) {
+            obj.govnName = ''
+          }
         // Traverse each property of the object
         for (const key in obj) {
             // Recursively call traverse for nested objects

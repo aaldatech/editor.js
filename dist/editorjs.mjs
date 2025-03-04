@@ -1461,9 +1461,9 @@ class D extends Ie {
       !c && !u && this.detectToolRootChange(l);
       let h;
       c || u ? h = !0 : h = !(l.length > 0 && l.every((b) => {
-        const { addedNodes: p, removedNodes: k, target: A } = b;
+        const { addedNodes: f, removedNodes: k, target: A } = b;
         return [
-          ...Array.from(p),
+          ...Array.from(f),
           ...Array.from(k),
           A
         ].some((I) => (d.isElement(I) || (I = I.parentElement), I && I.closest('[data-mutation-free="true"]') !== null));
@@ -1895,14 +1895,14 @@ class fo extends E {
       const n = await o.update(i, t);
       return new te(n);
     }, this.convert = (e, t, o) => {
-      var h, f;
+      var h, p;
       const { BlockManager: i, Tools: n } = this.Editor, s = i.getBlockById(e);
       if (!s)
         throw new Error(`Block with id "${e}" not found`);
       const a = n.blockTools.get(s.name), l = n.blockTools.get(t);
       if (!l)
         throw new Error(`Block Tool with type "${t}" not found`);
-      const c = ((h = a == null ? void 0 : a.conversionConfig) == null ? void 0 : h.export) !== void 0, u = ((f = l.conversionConfig) == null ? void 0 : f.import) !== void 0;
+      const c = ((h = a == null ? void 0 : a.conversionConfig) == null ? void 0 : h.export) !== void 0, u = ((p = l.conversionConfig) == null ? void 0 : p.import) !== void 0;
       if (c && u)
         i.convert(s, t, o);
       else {
@@ -2387,13 +2387,13 @@ var kt = { exports: {} };
               if (!h)
                 return u;
               if (c && typeof btoa == "function") {
-                var f = (p = h, "/*# sourceMappingURL=data:application/json;charset=utf-8;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(p)))) + " */"), b = h.sources.map(function(k) {
+                var p = (f = h, "/*# sourceMappingURL=data:application/json;charset=utf-8;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(f)))) + " */"), b = h.sources.map(function(k) {
                   return "/*# sourceURL=" + h.sourceRoot + k + " */";
                 });
-                return [u].concat(b).concat([f]).join(`
+                return [u].concat(b).concat([p]).join(`
 `);
               }
-              var p;
+              var f;
               return [u].join(`
 `);
             }(s, i);
@@ -2435,8 +2435,8 @@ var kt = { exports: {} };
           }
           return g[w];
         };
-      }(), u = null, h = 0, f = [], b = i(5);
-      function p(v, g) {
+      }(), u = null, h = 0, p = [], b = i(5);
+      function f(v, g) {
         for (var w = 0; w < v.length; w++) {
           var B = v[w], M = a[B.id];
           if (M) {
@@ -2464,9 +2464,9 @@ var kt = { exports: {} };
         var w = c(v.insertInto);
         if (!w)
           throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
-        var B = f[f.length - 1];
+        var B = p[p.length - 1];
         if (v.insertAt === "top")
-          B ? B.nextSibling ? w.insertBefore(g, B.nextSibling) : w.appendChild(g) : w.insertBefore(g, w.firstChild), f.push(g);
+          B ? B.nextSibling ? w.insertBefore(g, B.nextSibling) : w.appendChild(g) : w.insertBefore(g, w.firstChild), p.push(g);
         else if (v.insertAt === "bottom")
           w.appendChild(g);
         else {
@@ -2485,8 +2485,8 @@ var kt = { exports: {} };
         if (v.parentNode === null)
           return !1;
         v.parentNode.removeChild(v);
-        var g = f.indexOf(v);
-        g >= 0 && f.splice(g, 1);
+        var g = p.indexOf(v);
+        g >= 0 && p.splice(g, 1);
       }
       function I(v) {
         var g = document.createElement("style");
@@ -2546,12 +2546,12 @@ var kt = { exports: {} };
           throw new Error("The style-loader cannot be used in a non-browser environment");
         (g = g || {}).attrs = typeof g.attrs == "object" ? g.attrs : {}, g.singleton || typeof g.singleton == "boolean" || (g.singleton = l()), g.insertInto || (g.insertInto = "head"), g.insertAt || (g.insertAt = "bottom");
         var w = k(v, g);
-        return p(w, g), function(B) {
+        return f(w, g), function(B) {
           for (var M = [], T = 0; T < w.length; T++) {
             var N = w[T];
             (C = a[N.id]).refs--, M.push(C);
           }
-          for (B && p(k(B, g), g), T = 0; T < M.length; T++) {
+          for (B && f(k(B, g), g), T = 0; T < M.length; T++) {
             var C;
             if ((C = M[T]).refs === 0) {
               for (var $ = 0; $ < C.parts.length; $++)
@@ -2583,30 +2583,30 @@ var kt = { exports: {} };
           return i;
         var s = n.protocol + "//" + n.host, a = s + n.pathname.replace(/\/[^\/]*$/, "/");
         return i.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(l, c) {
-          var u, h = c.trim().replace(/^"(.*)"$/, function(f, b) {
+          var u, h = c.trim().replace(/^"(.*)"$/, function(p, b) {
             return b;
-          }).replace(/^'(.*)'$/, function(f, b) {
+          }).replace(/^'(.*)'$/, function(p, b) {
             return b;
           });
           return /^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(h) ? l : (u = h.indexOf("//") === 0 ? h : h.indexOf("/") === 0 ? s + h : a + h.replace(/^\.\//, ""), "url(" + JSON.stringify(u) + ")");
         });
       };
     }, function(t, o, i) {
-      var n, s, a, l, c, u, h, f, b;
-      t.exports = (n = "cdx-notifies", s = "cdx-notify", a = "cdx-notify__cross", l = "cdx-notify__button--confirm", c = "cdx-notify__button--cancel", u = "cdx-notify__input", h = "cdx-notify__button", f = "cdx-notify__btns-wrapper", { alert: b = function(p) {
-        var k = document.createElement("DIV"), A = document.createElement("DIV"), _ = p.message, I = p.style;
+      var n, s, a, l, c, u, h, p, b;
+      t.exports = (n = "cdx-notifies", s = "cdx-notify", a = "cdx-notify__cross", l = "cdx-notify__button--confirm", c = "cdx-notify__button--cancel", u = "cdx-notify__input", h = "cdx-notify__button", p = "cdx-notify__btns-wrapper", { alert: b = function(f) {
+        var k = document.createElement("DIV"), A = document.createElement("DIV"), _ = f.message, I = f.style;
         return k.classList.add(s), I && k.classList.add(s + "--" + I), k.innerHTML = _, A.classList.add(a), A.addEventListener("click", k.remove.bind(k)), k.appendChild(A), k;
-      }, confirm: function(p) {
-        var k = b(p), A = document.createElement("div"), _ = document.createElement("button"), I = document.createElement("button"), J = k.querySelector("." + a), U = p.cancelHandler, j = p.okHandler;
-        return A.classList.add(f), _.innerHTML = p.okText || "Confirm", I.innerHTML = p.cancelText || "Cancel", _.classList.add(h), I.classList.add(h), _.classList.add(l), I.classList.add(c), U && typeof U == "function" && (I.addEventListener("click", U), J.addEventListener("click", U)), j && typeof j == "function" && _.addEventListener("click", j), _.addEventListener("click", k.remove.bind(k)), I.addEventListener("click", k.remove.bind(k)), A.appendChild(_), A.appendChild(I), k.appendChild(A), k;
-      }, prompt: function(p) {
-        var k = b(p), A = document.createElement("div"), _ = document.createElement("button"), I = document.createElement("input"), J = k.querySelector("." + a), U = p.cancelHandler, j = p.okHandler;
-        return A.classList.add(f), _.innerHTML = p.okText || "Ok", _.classList.add(h), _.classList.add(l), I.classList.add(u), p.placeholder && I.setAttribute("placeholder", p.placeholder), p.default && (I.value = p.default), p.inputType && (I.type = p.inputType), U && typeof U == "function" && J.addEventListener("click", U), j && typeof j == "function" && _.addEventListener("click", function() {
+      }, confirm: function(f) {
+        var k = b(f), A = document.createElement("div"), _ = document.createElement("button"), I = document.createElement("button"), J = k.querySelector("." + a), U = f.cancelHandler, j = f.okHandler;
+        return A.classList.add(p), _.innerHTML = f.okText || "Confirm", I.innerHTML = f.cancelText || "Cancel", _.classList.add(h), I.classList.add(h), _.classList.add(l), I.classList.add(c), U && typeof U == "function" && (I.addEventListener("click", U), J.addEventListener("click", U)), j && typeof j == "function" && _.addEventListener("click", j), _.addEventListener("click", k.remove.bind(k)), I.addEventListener("click", k.remove.bind(k)), A.appendChild(_), A.appendChild(I), k.appendChild(A), k;
+      }, prompt: function(f) {
+        var k = b(f), A = document.createElement("div"), _ = document.createElement("button"), I = document.createElement("input"), J = k.querySelector("." + a), U = f.cancelHandler, j = f.okHandler;
+        return A.classList.add(p), _.innerHTML = f.okText || "Ok", _.classList.add(h), _.classList.add(l), I.classList.add(u), f.placeholder && I.setAttribute("placeholder", f.placeholder), f.default && (I.value = f.default), f.inputType && (I.type = f.inputType), U && typeof U == "function" && J.addEventListener("click", U), j && typeof j == "function" && _.addEventListener("click", function() {
           j(I.value);
         }), _.addEventListener("click", k.remove.bind(k)), A.appendChild(I), A.appendChild(_), k.appendChild(A), k;
       }, getWrapper: function() {
-        var p = document.createElement("DIV");
-        return p.classList.add(n), p;
+        var f = document.createElement("DIV");
+        return f.classList.add(n), f;
       } });
     }]);
   });
@@ -2687,12 +2687,12 @@ var vt = { exports: {} };
     r.exports = o();
   })(Gt, function() {
     function t(h) {
-      var f = h.tags, b = Object.keys(f), p = b.map(function(k) {
-        return typeof f[k];
+      var p = h.tags, b = Object.keys(p), f = b.map(function(k) {
+        return typeof p[k];
       }).every(function(k) {
         return k === "object" || k === "boolean" || k === "function";
       });
-      if (!p)
+      if (!f)
         throw new Error("The configuration was invalid");
       this.config = h;
     }
@@ -2705,56 +2705,56 @@ var vt = { exports: {} };
       return n.indexOf(h.nodeName) !== -1;
     }
     t.prototype.clean = function(h) {
-      const f = document.implementation.createHTMLDocument(), b = f.createElement("div");
-      return b.innerHTML = h, this._sanitize(f, b), b.innerHTML;
-    }, t.prototype._sanitize = function(h, f) {
-      var b = a(h, f), p = b.firstChild();
-      if (p)
+      const p = document.implementation.createHTMLDocument(), b = p.createElement("div");
+      return b.innerHTML = h, this._sanitize(p, b), b.innerHTML;
+    }, t.prototype._sanitize = function(h, p) {
+      var b = a(h, p), f = b.firstChild();
+      if (f)
         do {
-          if (p.nodeType === Node.TEXT_NODE)
-            if (p.data.trim() === "" && (p.previousElementSibling && i(p.previousElementSibling) || p.nextElementSibling && i(p.nextElementSibling))) {
-              f.removeChild(p), this._sanitize(h, f);
+          if (f.nodeType === Node.TEXT_NODE)
+            if (f.data.trim() === "" && (f.previousElementSibling && i(f.previousElementSibling) || f.nextElementSibling && i(f.nextElementSibling))) {
+              p.removeChild(f), this._sanitize(h, p);
               break;
             } else
               continue;
-          if (p.nodeType === Node.COMMENT_NODE) {
-            f.removeChild(p), this._sanitize(h, f);
+          if (f.nodeType === Node.COMMENT_NODE) {
+            p.removeChild(f), this._sanitize(h, p);
             break;
           }
-          var k = s(p), A;
-          k && (A = Array.prototype.some.call(p.childNodes, i));
-          var _ = !!f.parentNode, I = i(f) && i(p) && _, J = p.nodeName.toLowerCase(), U = l(this.config, J, p), j = k && A;
-          if (j || c(p, U) || !this.config.keepNestedBlockElements && I) {
-            if (!(p.nodeName === "SCRIPT" || p.nodeName === "STYLE"))
-              for (; p.childNodes.length > 0; )
-                f.insertBefore(p.childNodes[0], p);
-            f.removeChild(p), this._sanitize(h, f);
+          var k = s(f), A;
+          k && (A = Array.prototype.some.call(f.childNodes, i));
+          var _ = !!p.parentNode, I = i(p) && i(f) && _, J = f.nodeName.toLowerCase(), U = l(this.config, J, f), j = k && A;
+          if (j || c(f, U) || !this.config.keepNestedBlockElements && I) {
+            if (!(f.nodeName === "SCRIPT" || f.nodeName === "STYLE"))
+              for (; f.childNodes.length > 0; )
+                p.insertBefore(f.childNodes[0], f);
+            p.removeChild(f), this._sanitize(h, p);
             break;
           }
-          for (var Q = 0; Q < p.attributes.length; Q += 1) {
-            var he = p.attributes[Q];
-            u(he, U, p) && (p.removeAttribute(he.name), Q = Q - 1);
+          for (var Q = 0; Q < f.attributes.length; Q += 1) {
+            var he = f.attributes[Q];
+            u(he, U, f) && (f.removeAttribute(he.name), Q = Q - 1);
           }
-          this._sanitize(h, p);
-        } while (p = b.nextSibling());
+          this._sanitize(h, f);
+        } while (f = b.nextSibling());
     };
-    function a(h, f) {
+    function a(h, p) {
       return h.createTreeWalker(
-        f,
+        p,
         NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT,
         null,
         !1
       );
     }
-    function l(h, f, b) {
-      return typeof h.tags[f] == "function" ? h.tags[f](b) : h.tags[f];
+    function l(h, p, b) {
+      return typeof h.tags[p] == "function" ? h.tags[p](b) : h.tags[p];
     }
-    function c(h, f) {
-      return typeof f > "u" ? !0 : typeof f == "boolean" ? !f : !1;
+    function c(h, p) {
+      return typeof p > "u" ? !0 : typeof p == "boolean" ? !p : !1;
     }
-    function u(h, f, b) {
-      var p = h.name.toLowerCase();
-      return f === !0 ? !1 : typeof f[p] == "function" ? !f[p](h.value, b) : typeof f[p] > "u" || f[p] === !1 ? !0 : typeof f[p] == "string" ? f[p] !== h.value : !1;
+    function u(h, p, b) {
+      var f = h.name.toLowerCase();
+      return p === !0 ? !1 : typeof p[f] == "function" ? !p[f](h.value, b) : typeof p[f] > "u" || p[f] === !1 ? !0 : typeof p[f] == "string" ? p[f] !== h.value : !1;
     }
     return t;
   });
@@ -4330,8 +4330,8 @@ var St = { exports: {} };
       var a = function() {
         function l(c) {
           var u = this;
-          (function(h, f) {
-            if (!(h instanceof f))
+          (function(h, p) {
+            if (!(h instanceof p))
               throw new TypeError("Cannot call a class as a function");
           })(this, l), this.commands = {}, this.keys = {}, this.name = c.name, this.parseShortcutName(c.name), this.element = c.on, this.callback = c.callback, this.executeShortcut = function(h) {
             u.execute(h);
@@ -4346,9 +4346,9 @@ var St = { exports: {} };
           for (var u = 0; u < c.length; u++) {
             c[u] = c[u].toUpperCase();
             var h = !1;
-            for (var f in l.supportedCommands)
-              if (l.supportedCommands[f].includes(c[u])) {
-                h = this.commands[f] = !0;
+            for (var p in l.supportedCommands)
+              if (l.supportedCommands[p].includes(c[u])) {
+                h = this.commands[p] = !0;
                 break;
               }
             h || (this.keys[c[u]] = !0);
@@ -4356,13 +4356,13 @@ var St = { exports: {} };
           for (var b in l.supportedCommands)
             this.commands[b] || (this.commands[b] = !1);
         } }, { key: "execute", value: function(c) {
-          var u, h = { CMD: c.ctrlKey || c.metaKey, SHIFT: c.shiftKey, ALT: c.altKey }, f = !0;
+          var u, h = { CMD: c.ctrlKey || c.metaKey, SHIFT: c.shiftKey, ALT: c.altKey }, p = !0;
           for (u in this.commands)
-            this.commands[u] !== h[u] && (f = !1);
-          var b, p = !0;
+            this.commands[u] !== h[u] && (p = !1);
+          var b, f = !0;
           for (b in this.keys)
-            p = p && c.keyCode === l.keyCodes[b];
-          f && p && this.callback(c);
+            f = f && c.keyCode === l.keyCodes[b];
+          p && f && this.callback(c);
         } }, { key: "remove", value: function() {
           this.element.removeEventListener("keydown", this.executeShortcut);
         } }]), l;
@@ -6549,8 +6549,8 @@ class Ce extends E {
     n === -1 && (n = 0);
     let s = t.focusOffset;
     return i.nodeType !== Node.TEXT_NODE && i.childNodes.length && (i.childNodes[s] ? (i = i.childNodes[s], s = 0) : (i = i.childNodes[s - 1], s = i.textContent.length)), (d.isLineBreakTag(o) || d.isEmpty(o)) && this.getHigherLevelSiblings(i, "left").every((c) => {
-      const u = d.isLineBreakTag(c), h = c.children.length === 1 && d.isLineBreakTag(c.children[0]), f = u || h;
-      return d.isEmpty(c) && !f;
+      const u = d.isLineBreakTag(c), h = c.children.length === 1 && d.isLineBreakTag(c.children[0]), p = u || h;
+      return d.isEmpty(c) && !p;
     }) && s === n ? !0 : o === null || i === o && s <= n;
   }
   /**
@@ -7028,15 +7028,15 @@ class xi extends E {
     });
   }
 }
-const _t = (r) => {
+const _t = (r, e) => {
   if (typeof r == "object" && r !== null) {
     if (r.hasOwnProperty("row_ulid")) {
-      const e = r.row_ulid;
-      r.row_ulid = ce.generate().toString(), Nt(block, e, r.row_ulid), r != null && r.parent_id || (r.isMainMed = !0);
+      const t = r.row_ulid;
+      r.row_ulid = ce.generate().toString(), Nt(e, t, r.row_ulid), r != null && r.parent_id || (r.isMainMed = !0);
     }
     r.hasOwnProperty("ulid") && r.ulid && r.ulid.length > 5 && (r.ulid = ce.generate().toString());
-    for (const e in r)
-      r.hasOwnProperty(e) && _t(r[e]);
+    for (const t in r)
+      r.hasOwnProperty(t) && _t(r[t], e);
   }
 }, Nt = (r, e, t) => {
   if (typeof r == "object" && r !== null) {
@@ -7172,13 +7172,13 @@ const Rt = class Dt extends E {
     let l = e.getData("text/html");
     if (s)
       try {
-        const f = JSON.parse(s);
-        _t(f), this.insertEditorJSData(f);
+        const p = JSON.parse(s);
+        _t(p, p), this.insertEditorJSData(p);
         return;
       } catch {
       }
     t && a.trim() && l.trim() && (l = "<p>" + (l.trim() ? l : a) + "</p>");
-    const c = Object.keys(this.toolsTags).reduce((f, b) => (f[b.toLowerCase()] = this.toolsTags[b].sanitizationConfig ?? {}, f), {}), u = Object.assign({}, c, o.getAllInlineToolsSanitizeConfig(), { br: {} }), h = X(l, u);
+    const c = Object.keys(this.toolsTags).reduce((p, b) => (p[b.toLowerCase()] = this.toolsTags[b].sanitizationConfig ?? {}, p), {}), u = Object.assign({}, c, o.getAllInlineToolsSanitizeConfig(), { br: {} }), h = X(l, u);
     !h.trim() || h.trim() === a || !d.isHTMLString(h) ? await this.processText(a) : await this.processText(h, !0);
   }
   /**
@@ -7321,11 +7321,11 @@ const Rt = class Dt extends E {
    */
   async processFile(e) {
     const t = Qt(e), o = Object.entries(this.toolsFiles).find(([s, { mimeTypes: a, extensions: l }]) => {
-      const [c, u] = e.type.split("/"), h = l.find((b) => b.toLowerCase() === t.toLowerCase()), f = a.find((b) => {
-        const [p, k] = b.split("/");
-        return p === c && (k === u || k === "*");
+      const [c, u] = e.type.split("/"), h = l.find((b) => b.toLowerCase() === t.toLowerCase()), p = a.find((b) => {
+        const [f, k] = b.split("/");
+        return f === c && (k === u || k === "*");
       });
-      return !!h || !!f;
+      return !!h || !!p;
     });
     if (!o)
       return;
@@ -7355,8 +7355,8 @@ const Rt = class Dt extends E {
           s = n, l = !0, this.toolsTags[s.tagName] && (a = this.toolsTags[s.tagName].tool);
           break;
       }
-      const { tags: c } = a.pasteConfig || { tags: [] }, u = c.reduce((b, p) => (this.collectTagNames(p).forEach((A) => {
-        const _ = P(p) ? p[A] : null;
+      const { tags: c } = a.pasteConfig || { tags: [] }, u = c.reduce((b, f) => (this.collectTagNames(f).forEach((A) => {
+        const _ = P(f) ? f[A] : null;
         b[A.toLowerCase()] = _ || {};
       }), b), {}), h = Object.assign({}, u, a.baseSanitizeConfig);
       if (s.tagName.toLowerCase() === "table") {
@@ -7366,14 +7366,14 @@ const Rt = class Dt extends E {
         }).firstChild;
       } else
         s.innerHTML = X(s.innerHTML, h);
-      const f = this.composePasteEvent("tag", {
+      const p = this.composePasteEvent("tag", {
         data: s
       });
       return {
         content: s,
         isBlock: l,
         tool: a.name,
-        event: f
+        event: p
       };
     }).filter((n) => {
       const s = d.isEmpty(n.content), a = d.isSingleTag(n.content);
@@ -7512,9 +7512,9 @@ const Rt = class Dt extends E {
    */
   processElementNode(e, t, o) {
     const i = Object.keys(this.toolsTags), n = e, { tool: s } = this.toolsTags[n.tagName] || {}, a = this.tagsByTool[s == null ? void 0 : s.name] || [], l = i.includes(n.tagName), c = d.blockElements.includes(n.tagName.toLowerCase()), u = Array.from(n.children).some(
-      ({ tagName: f }) => i.includes(f) && !a.includes(f)
+      ({ tagName: p }) => i.includes(p) && !a.includes(p)
     ), h = Array.from(n.children).some(
-      ({ tagName: f }) => d.blockElements.includes(f.toLowerCase())
+      ({ tagName: p }) => d.blockElements.includes(p.toLowerCase())
     );
     if (!c && !l && !u)
       return o.appendChild(n), [...t, o];
@@ -7835,22 +7835,22 @@ class be extends E {
     const a = this.stackOfSelected[o - 1] - this.stackOfSelected[o - 2] > 0;
     let l = s;
     o > 1 && (l = a ? i : n);
-    const c = e > this.stackOfSelected[o - 1] && l === i, u = e < this.stackOfSelected[o - 1] && l === n, f = !(c || u || l === s);
-    if (!f && (e > this.stackOfSelected[o - 1] || this.stackOfSelected[o - 1] === void 0)) {
+    const c = e > this.stackOfSelected[o - 1] && l === i, u = e < this.stackOfSelected[o - 1] && l === n, p = !(c || u || l === s);
+    if (!p && (e > this.stackOfSelected[o - 1] || this.stackOfSelected[o - 1] === void 0)) {
       let k = this.stackOfSelected[o - 1] + 1 || e;
       for (k; k <= e; k++)
         this.addBlockInSelection(k);
       return;
     }
-    if (!f && e < this.stackOfSelected[o - 1]) {
+    if (!p && e < this.stackOfSelected[o - 1]) {
       for (let k = this.stackOfSelected[o - 1] - 1; k >= e; k--)
         this.addBlockInSelection(k);
       return;
     }
-    if (!f)
+    if (!p)
       return;
-    let b = o - 1, p;
-    for (e > this.stackOfSelected[o - 1] ? p = () => e > this.stackOfSelected[b] : p = () => e < this.stackOfSelected[b]; p(); )
+    let b = o - 1, f;
+    for (e > this.stackOfSelected[o - 1] ? f = () => e > this.stackOfSelected[b] : f = () => e < this.stackOfSelected[b]; f(); )
       this.rectCrossesBlocks && this.Editor.BlockSelection.unSelectBlockByIndex(this.stackOfSelected[b]), this.stackOfSelected.pop(), b--;
   }
 }

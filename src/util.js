@@ -1,4 +1,4 @@
-export const sanitizeBlockWUlid = (obj) => {
+export const sanitizeBlockWUlid = (obj, block) => {
     if (typeof obj === 'object' && obj !== null) {
         // Replace the existing row_ulid property with a new random ID
         if (obj.hasOwnProperty('row_ulid')) {
@@ -16,7 +16,7 @@ export const sanitizeBlockWUlid = (obj) => {
         for (const key in obj) {
             // Recursively call traverse for nested objects
             if (obj.hasOwnProperty(key)) {
-                sanitizeBlockWUlid(obj[key]);
+                sanitizeBlockWUlid(obj[key], block);
             }
         }
     }

@@ -2,7 +2,12 @@ export const sanitizeBlockWUlid = (obj) => {
     if (typeof obj === 'object' && obj !== null) {
         // Replace the existing row_ulid property with a new random ID
         if (obj.hasOwnProperty('row_ulid')) {
+            const old_ulid = obj.row_ulid;
             obj.row_ulid = Ulid.generate().toString();
+            updateParentId(block, old_ulid, obj.row_ulid);
+            if (!obj?.parent_id) {
+                obj.isMainMed = true
+            }
         }
         if (obj.hasOwnProperty('ulid') && !!obj.ulid && obj.ulid.length > 5) {
             obj.ulid = Ulid.generate().toString();
@@ -16,6 +21,23 @@ export const sanitizeBlockWUlid = (obj) => {
         }
     }
 }
+
+export const updateParentId = (data, oldUlid, newUlid) => {
+    if (typeof data === 'object' && data !== null) {
+        // Check if the current object has a parent_id key with the oldUlid value
+        if (data.hasOwnProperty('parent_id') && data.parent_id === oldUlid) {
+            data.parent_id = newUlid;
+        }
+        // Traverse each property of the object
+        for (const key in data) {
+            // Recursively call updateParentId for nested objects
+            if (data.hasOwnProperty(key)) {
+                updateParentId(data[key], oldUlid, newUlid);
+            }
+        }
+    }
+    return data;
+};
 
 class Ulid {
     static ENCODING_CHARS = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
